@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Burger Paradise - Premium Burgers</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -12,32 +14,114 @@
                     colors: {
                         'burger-orange': '#FF6B35',
                         'burger-red': '#D32F2F',
-                        'burger-yellow': '#FFD700'
+                        'burger-yellow': '#FFD700',
+                        'burger-dark': '#2D1810',
+                        'burger-cream': '#FFF8E7'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slide-up 0.5s ease-out',
+                        'scale-in': 'scale-in 0.3s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        'pulse-glow': {
+                            '0%': { boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)' },
+                            '100%': { boxShadow: '0 0 30px rgba(255, 107, 53, 0.8)' }
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        'scale-in': {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #FF6B35 0%, #D32F2F 100%);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+        .btn-gradient:hover {
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+            transform: translateY(-2px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FF6B35 0%, #D32F2F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .menu-item-image {
+            transition: transform 0.3s ease;
+        }
+        .menu-item-image:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-burger-cream">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav class="bg-white/95 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 border-b border-orange-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-18">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-burger-red">🍔 Burger Paradise</h1>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-burger-orange to-burger-red rounded-full flex items-center justify-center text-white text-xl animate-pulse-glow">
+                            <i class="fas fa-hamburger"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold text-gradient">Burger Paradise</h1>
+                    </div>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="#menu" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Menu</a>
-                        <a href="#about" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#contact" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-50">
+                            <i class="fas fa-home mr-2"></i>Home
+                        </a>
+                        <a href="#menu" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-50">
+                            <i class="fas fa-utensils mr-2"></i>Menu
+                        </a>
+                        <a href="#about" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-50">
+                            <i class="fas fa-info-circle mr-2"></i>About
+                        </a>
+                        <a href="#contact" class="text-gray-700 hover:text-burger-red px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-orange-50">
+                            <i class="fas fa-phone mr-2"></i>Contact
+                        </a>
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <button id="cartBtn" class="bg-burger-red text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center">
-                        <span class="mr-2">🛒</span>
+                    <button id="cartBtn" class="btn-gradient text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 flex items-center font-medium">
+                        <i class="fas fa-shopping-cart mr-2"></i>
                         Cart (<span id="cartCount">0</span>)
                     </button>
                 </div>
@@ -46,28 +130,50 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-16 bg-gradient-to-r from-burger-orange to-burger-red text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div class="text-center">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                    Taste the <span class="text-burger-yellow">Best</span> Burgers
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Fresh ingredients, bold flavors, unforgettable taste
-                </p>
-                <button onclick="scrollToMenu()" class="bg-white text-burger-red px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-                    Order Now
-                </button>
+    <section id="home" class="pt-18 bg-gradient-to-br from-burger-orange via-burger-red to-orange-600 text-white relative overflow-hidden hero-pattern">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate-slide-up">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                        Taste the <span class="text-burger-yellow animate-pulse">Best</span> Burgers
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90 font-light">
+                        Fresh ingredients, bold flavors, unforgettable taste that will make you crave for more
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="scrollToMenu()" class="bg-white text-burger-red px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                            <i class="fas fa-utensils mr-2"></i>Order Now
+                        </button>
+                        <button class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30">
+                            <i class="fas fa-play mr-2"></i>Watch Story
+                        </button>
+                    </div>
+                </div>
+                <div class="relative animate-float">
+                    <div class="relative z-10">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                             alt="Delicious Burger" 
+                             class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl">
+                    </div>
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-burger-yellow rounded-full flex items-center justify-center text-burger-dark text-2xl font-bold animate-bounce">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-burger-cream to-transparent"></div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="py-16 bg-white">
+    <section id="menu" class="py-20 bg-burger-cream relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Menu</h2>
-                <p class="text-gray-600 text-lg">Handcrafted burgers made with love</p>
+            <div class="text-center mb-16">
+                <div class="inline-block p-2 bg-orange-100 rounded-full mb-4">
+                    <i class="fas fa-utensils text-burger-orange text-2xl"></i>
+                </div>
+                <h2 class="text-5xl font-bold text-burger-dark mb-6">Our Premium Menu</h2>
+                <p class="text-gray-600 text-xl max-w-2xl mx-auto">Handcrafted burgers made with love, premium ingredients, and years of culinary expertise</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
@@ -77,55 +183,71 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-800 mb-6">About Burger Paradise</h2>
-                    <p class="text-gray-600 text-lg mb-6">
-                        Since 2020, we've been serving the finest burgers in Sri Lanka. Our commitment to quality ingredients, 
-                        innovative recipes, and exceptional service has made us a favorite among burger lovers.
-                    </p>
-                    <p class="text-gray-600 text-lg mb-6">
-                        Every burger is made to order with fresh, locally sourced ingredients. From our signature beef patties 
-                        to our artisan buns, we ensure every bite is perfect.
-                    </p>
-                    <div class="flex space-x-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-burger-red">500+</div>
-                            <div class="text-gray-600">Happy Customers</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-burger-red">15+</div>
-                            <div class="text-gray-600">Burger Varieties</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-burger-red">3</div>
-                            <div class="text-gray-600">Years Experience</div>
-                        </div>
+    <section id="about" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-red-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Restaurant Interior" 
+                         class="w-full rounded-3xl shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-burger-orange text-white p-6 rounded-2xl shadow-xl">
+                        <div class="text-3xl font-bold">4.9⭐</div>
+                        <div class="text-sm opacity-90">Customer Rating</div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div class="bg-burger-orange rounded-lg p-8 text-white">
-                        <h3 class="text-2xl font-bold mb-4">Why Choose Us?</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-center">
-                                <span class="mr-3">✓</span>
-                                Fresh, quality ingredients
-                            </li>
-                            <li class="flex items-center">
-                                <span class="mr-3">✓</span>
-                                Made to order
-                            </li>
-                            <li class="flex items-center">
-                                <span class="mr-3">✓</span>
-                                Fast delivery
-                            </li>
-                            <li class="flex items-center">
-                                <span class="mr-3">✓</span>
-                                Affordable prices
-                            </li>
-                        </ul>
+                <div>
+                    <div class="inline-block p-2 bg-orange-100 rounded-full mb-4">
+                        <i class="fas fa-heart text-burger-orange text-2xl"></i>
+                    </div>
+                    <h2 class="text-5xl font-bold text-burger-dark mb-6">About Burger Paradise</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Since 2020, we've been serving the finest burgers in Sri Lanka. Our commitment to quality ingredients, 
+                        innovative recipes, and exceptional service has made us a favorite among burger lovers across the island.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Every burger is made to order with fresh, locally sourced ingredients. From our signature beef patties 
+                        to our artisan buns, we ensure every bite is a moment of pure bliss.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="text-center p-4 bg-white rounded-2xl shadow-lg">
+                            <div class="text-4xl font-bold text-gradient mb-2">500+</div>
+                            <div class="text-gray-600 font-medium">Happy Customers</div>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-2xl shadow-lg">
+                            <div class="text-4xl font-bold text-gradient mb-2">15+</div>
+                            <div class="text-gray-600 font-medium">Burger Varieties</div>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-2xl shadow-lg">
+                            <div class="text-4xl font-bold text-gradient mb-2">5⭐</div>
+                            <div class="text-gray-600 font-medium">Years Experience</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-burger-orange to-burger-red rounded-2xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center">
+                            <i class="fas fa-crown mr-3 text-burger-yellow"></i>
+                            Why Choose Us?
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-burger-yellow"></i>
+                                <span>Fresh, quality ingredients</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-burger-yellow"></i>
+                                <span>Made to order</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-burger-yellow"></i>
+                                <span>Fast delivery</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle mr-3 text-burger-yellow"></i>
+                                <span>Affordable prices</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,44 +255,75 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
+    <section id="contact" class="py-20 bg-burger-cream">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
-                <p class="text-gray-600 text-lg">Get in touch for orders and inquiries</p>
+            <div class="text-center mb-16">
+                <div class="inline-block p-2 bg-orange-100 rounded-full mb-4">
+                    <i class="fas fa-phone text-burger-orange text-2xl"></i>
+                </div>
+                <h2 class="text-5xl font-bold text-burger-dark mb-6">Get In Touch</h2>
+                <p class="text-gray-600 text-xl">Ready to satisfy your cravings? Contact us for orders and inquiries</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-6 bg-gray-50 rounded-lg">
-                    <div class="text-3xl text-burger-red mb-4">📍</div>
-                    <h3 class="text-xl font-semibold mb-2">Address</h3>
-                    <p class="text-gray-600">123 Main Street<br>Colombo, Sri Lanka</p>
+                <div class="text-center p-8 bg-white rounded-3xl shadow-xl card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-burger-orange to-burger-red rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-burger-dark mb-4">Visit Us</h3>
+                    <p class="text-gray-600 leading-relaxed">123 Main Street<br>Colombo 03, Sri Lanka<br>Near Independence Square</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg">
-                    <div class="text-3xl text-burger-red mb-4">📞</div>
-                    <h3 class="text-xl font-semibold mb-2">Phone</h3>
-                    <p class="text-gray-600">+94 11 234 5678<br>+94 77 123 4567</p>
+                <div class="text-center p-8 bg-white rounded-3xl shadow-xl card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-burger-orange to-burger-red rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-burger-dark mb-4">Call Us</h3>
+                    <p class="text-gray-600 leading-relaxed">+94 11 234 5678<br>+94 77 123 4567<br>24/7 Customer Support</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg">
-                    <div class="text-3xl text-burger-red mb-4">⏰</div>
-                    <h3 class="text-xl font-semibold mb-2">Hours</h3>
-                    <p class="text-gray-600">Mon - Sun<br>10:00 AM - 11:00 PM</p>
+                <div class="text-center p-8 bg-white rounded-3xl shadow-xl card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-burger-orange to-burger-red rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-6">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-burger-dark mb-4">Open Hours</h3>
+                    <p class="text-gray-600 leading-relaxed">Monday - Sunday<br>10:00 AM - 11:00 PM<br>No holidays, always open!</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-burger-dark text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
-                <h3 class="text-2xl font-bold text-burger-yellow mb-4">🍔 Burger Paradise</h3>
-                <p class="text-gray-300 mb-6">Serving the best burgers in Sri Lanka</p>
-                <div class="border-t border-gray-700 pt-6">
-                    <p class="text-gray-400 text-sm">
-                        Created by <strong>Yasas Pasindu Fernando</strong><br>
-                        Email: yasaspasindufernando@gmail.com<br>
-                        Student ID: <strong>PR23105284</strong> @ ICET INSTITUTE
+                <div class="flex items-center justify-center space-x-3 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-burger-orange to-burger-red rounded-full flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-burger-yellow">Burger Paradise</h3>
+                </div>
+                <p class="text-gray-300 mb-8 text-lg">Serving the best burgers in Sri Lanka with love and passion</p>
+                
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="w-12 h-12 bg-burger-orange rounded-full flex items-center justify-center text-white hover:bg-burger-red transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-burger-orange rounded-full flex items-center justify-center text-white hover:bg-burger-red transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-burger-orange rounded-full flex items-center justify-center text-white hover:bg-burger-red transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-burger-orange rounded-full flex items-center justify-center text-white hover:bg-burger-red transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Created with ❤️ by <strong class="text-burger-yellow">Yasas Pasindu Fernando</strong><br>
+                        📧 yasaspasindufernando@gmail.com<br>
+                        🎓 Student ID: <strong class="text-burger-yellow">PR23105284</strong> @ ICET INSTITUTE
                     </p>
                 </div>
             </div>
@@ -178,23 +331,29 @@
     </footer>
 
     <!-- Cart Modal -->
-    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div id="cartModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-lg max-w-2xl w-full max-h-96 overflow-y-auto">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-gray-800">Your Order</h3>
-                        <button id="closeCart" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-scale-in">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-3xl font-bold text-burger-dark flex items-center">
+                            <i class="fas fa-shopping-cart mr-3 text-burger-orange"></i>
+                            Your Order
+                        </h3>
+                        <button id="closeCart" class="text-gray-400 hover:text-gray-600 text-3xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-all duration-300">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
-                    <div id="cartItems" class="space-y-4">
+                    <div id="cartItems" class="space-y-4 max-h-96 overflow-y-auto custom-scrollbar">
                         <!-- Cart items will be populated here -->
                     </div>
-                    <div class="border-t pt-4 mt-4">
-                        <div class="flex justify-between items-center text-xl font-bold">
-                            <span>Total: </span>
-                            <span id="cartTotal">Rs. 0</span>
+                    <div class="border-t pt-6 mt-6">
+                        <div class="flex justify-between items-center text-2xl font-bold mb-6">
+                            <span class="text-burger-dark">Total:</span>
+                            <span id="cartTotal" class="text-gradient">Rs. 0</span>
                         </div>
-                        <button id="checkoutBtn" class="w-full mt-4 bg-burger-red text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">
+                        <button id="checkoutBtn" class="w-full btn-gradient text-white py-4 rounded-2xl hover:shadow-xl transition-all duration-300 font-semibold text-lg">
+                            <i class="fas fa-credit-card mr-2"></i>
                             Place Order
                         </button>
                     </div>
@@ -204,49 +363,55 @@
     </div>
 
     <script>
-        // Menu data
+        // Menu data with real images
         const menuItems = [
             {
                 id: 1,
                 name: "Classic Beef Burger",
-                description: "Juicy beef patty with lettuce, tomato, onion, and our special sauce",
+                description: "Juicy beef patty with fresh lettuce, tomato, onion, and our signature special sauce",
                 price: 1250,
-                image: "🍔"
+                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "beef"
             },
             {
                 id: 2,
                 name: "Chicken Deluxe",
-                description: "Grilled chicken breast with cheese, bacon, and ranch sauce",
+                description: "Grilled chicken breast with cheese, crispy bacon, and creamy ranch sauce",
                 price: 1450,
-                image: "🍗"
+                image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "chicken"
             },
             {
                 id: 3,
                 name: "Veggie Paradise",
-                description: "Plant-based patty with fresh vegetables and avocado",
+                description: "Plant-based patty with fresh vegetables, avocado, and herb mayo",
                 price: 1150,
-                image: "🥗"
+                image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "vegetarian"
             },
             {
                 id: 4,
                 name: "BBQ Bacon Burger",
-                description: "Double beef patty with crispy bacon and BBQ sauce",
+                description: "Double beef patty with crispy bacon, BBQ sauce, and caramelized onions",
                 price: 1650,
-                image: "🥓"
+                image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "beef"
             },
             {
                 id: 5,
                 name: "Fish Fillet Burger",
-                description: "Crispy fish fillet with tartar sauce and fresh lettuce",
+                description: "Crispy fish fillet with tartar sauce, fresh lettuce, and pickles",
                 price: 1350,
-                image: "🐟"
+                image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "fish"
             },
             {
                 id: 6,
                 name: "Spicy Jalapeño Burger",
-                description: "Beef patty with jalapeños, pepper jack cheese, and spicy mayo",
+                description: "Beef patty with jalapeños, pepper jack cheese, and spicy chipotle mayo",
                 price: 1550,
-                image: "🌶️"
+                image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                category: "spicy"
             }
         ];
 
@@ -257,18 +422,25 @@
             const menuGrid = document.getElementById('menuGrid');
             menuGrid.innerHTML = '';
 
-            menuItems.forEach(item => {
+            menuItems.forEach((item, index) => {
                 const menuCard = document.createElement('div');
-                menuCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow';
+                menuCard.className = 'bg-white rounded-3xl shadow-xl overflow-hidden card-hover animate-slide-up';
+                menuCard.style.animationDelay = `${index * 0.1}s`;
                 menuCard.innerHTML = `
+                    <div class="relative overflow-hidden">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-64 object-cover menu-item-image">
+                        <div class="absolute top-4 right-4 bg-burger-orange text-white px-3 py-1 rounded-full text-sm font-medium">
+                            ${item.category}
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
                     <div class="p-6">
-                        <div class="text-6xl text-center mb-4">${item.image}</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">${item.name}</h3>
-                        <p class="text-gray-600 mb-4">${item.description}</p>
+                        <h3 class="text-2xl font-bold text-burger-dark mb-3">${item.name}</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">${item.description}</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-burger-red">Rs. ${item.price.toLocaleString()}</span>
-                            <button onclick="addToCart(${item.id})" class="bg-burger-orange text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
-                                Add to Cart
+                            <span class="text-3xl font-bold text-gradient">Rs. ${item.price.toLocaleString()}</span>
+                            <button onclick="addToCart(${item.id})" class="btn-gradient text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium">
+                                <i class="fas fa-plus mr-2"></i>Add to Cart
                             </button>
                         </div>
                     </div>
@@ -288,13 +460,14 @@
             }
 
             updateCartUI();
-            showNotification(`${item.name} added to cart!`);
+            showNotification(`${item.name} added to cart!`, 'success');
         }
 
         function removeFromCart(itemId) {
             cart = cart.filter(item => item.id !== itemId);
             updateCartUI();
             renderCartItems();
+            showNotification('Item removed from cart', 'info');
         }
 
         function updateQuantity(itemId, change) {
@@ -320,7 +493,13 @@
             const cartTotal = document.getElementById('cartTotal');
 
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+                cartItems.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-cart text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500 text-xl">Your cart is empty</p>
+                        <p class="text-gray-400 text-sm mt-2">Add some delicious burgers to get started!</p>
+                    </div>
+                `;
                 cartTotal.textContent = 'Rs. 0';
                 return;
             }
@@ -333,20 +512,27 @@
                 total += itemTotal;
 
                 const cartItem = document.createElement('div');
-                cartItem.className = 'flex justify-between items-center p-4 bg-gray-50 rounded-lg';
+                cartItem.className = 'flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl border border-orange-100 animate-slide-up';
                 cartItem.innerHTML = `
-                    <div class="flex items-center">
-                        <span class="text-2xl mr-3">${item.image}</span>
+                    <div class="flex items-center space-x-4">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-xl">
                         <div>
-                            <h4 class="font-semibold">${item.name}</h4>
+                            <h4 class="font-bold text-burger-dark text-lg">${item.name}</h4>
                             <p class="text-gray-600">Rs. ${item.price.toLocaleString()} each</p>
+                            <p class="text-sm text-gray-500">Subtotal: Rs. ${itemTotal.toLocaleString()}</p>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="updateQuantity(${item.id}, -1)" class="bg-gray-300 text-gray-700 w-8 h-8 rounded-full hover:bg-gray-400">-</button>
-                        <span class="mx-3 font-semibold">${item.quantity}</span>
-                        <button onclick="updateQuantity(${item.id}, 1)" class="bg-gray-300 text-gray-700 w-8 h-8 rounded-full hover:bg-gray-400">+</button>
-                        <button onclick="removeFromCart(${item.id})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-4">Remove</button>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="updateQuantity(${item.id}, -1)" class="w-10 h-10 bg-white text-burger-red border-2 border-burger-red rounded-full hover:bg-burger-red hover:text-white transition-all duration-300 flex items-center justify-center font-bold">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="mx-3 font-bold text-xl text-burger-dark min-w-[2rem] text-center">${item.quantity}</span>
+                        <button onclick="updateQuantity(${item.id}, 1)" class="w-10 h-10 bg-white text-burger-red border-2 border-burger-red rounded-full hover:bg-burger-red hover:text-white transition-all duration-300 flex items-center justify-center font-bold">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button onclick="removeFromCart(${item.id})" class="ml-4 w-10 h-10 bg-red-500 text-white rounded-full hover:bg-red-600 transition-all duration-300 flex items-center justify-center">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 `;
                 cartItems.appendChild(cartItem);
@@ -355,14 +541,21 @@
             cartTotal.textContent = `Rs. ${total.toLocaleString()}`;
         }
 
-        function showNotification(message) {
+        function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-            notification.textContent = message;
+            const bgColor = type === 'success' ? 'bg-green-500' : type === 'info' ? 'bg-blue-500' : 'bg-red-500';
+            const icon = type === 'success' ? 'fa-check-circle' : type === 'info' ? 'fa-info-circle' : 'fa-exclamation-circle';
+            
+            notification.className = `fixed top-24 right-4 ${bgColor} text-white px-6 py-4 rounded-2xl shadow-2xl z-50 animate-slide-up flex items-center space-x-3`;
+            notification.innerHTML = `
+                <i class="fas ${icon}"></i>
+                <span class="font-medium">${message}</span>
+            `;
             document.body.appendChild(notification);
 
             setTimeout(() => {
-                notification.remove();
+                notification.style.animation = 'slide-up 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
             }, 3000);
         }
 
@@ -382,14 +575,39 @@
 
         document.getElementById('checkoutBtn').addEventListener('click', () => {
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                showNotification('Your cart is empty!', 'error');
                 return;
             }
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const orderSummary = cart.map(item => `${item.name} x${item.quantity}`).join('\n');
             
-            alert(`Order Placed Successfully!\n\nOrder Summary:\n${orderSummary}\n\nTotal: Rs. ${total.toLocaleString()}\n\nThank you for your order!`);
+            // Create a more beautiful order confirmation
+            const confirmationModal = document.createElement('div');
+            confirmationModal.className = 'fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+            confirmationModal.innerHTML = `
+                <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center animate-scale-in">
+                    <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-burger-dark mb-4">Order Confirmed!</h3>
+                    <p class="text-gray-600 mb-6">Thank you for your order. We'll prepare your delicious burgers with love!</p>
+                    <div class="bg-orange-50 rounded-2xl p-4 mb-6 text-left">
+                        <h4 class="font-bold text-burger-dark mb-2">Order Summary:</h4>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            ${cart.map(item => `<div class="flex justify-between"><span>${item.name} x${item.quantity}</span><span>Rs. ${(item.price * item.quantity).toLocaleString()}</span></div>`).join('')}
+                        </div>
+                        <div class="border-t border-orange-200 mt-2 pt-2 flex justify-between font-bold text-burger-dark">
+                            <span>Total:</span>
+                            <span>Rs. ${total.toLocaleString()}</span>
+                        </div>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="btn-gradient text-white px-8 py-3 rounded-full font-medium">
+                        <i class="fas fa-thumbs-up mr-2"></i>Awesome!
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(confirmationModal);
             
             cart = [];
             updateCartUI();
@@ -414,11 +632,86 @@
             });
         });
 
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             renderMenu();
             updateCartUI();
+            
+            // Observe elements for scroll animations
+            document.querySelectorAll('.card-hover').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+
+        // Mobile menu toggle (for responsive design)
+        const mobileMenuToggle = document.createElement('button');
+        mobileMenuToggle.className = 'md:hidden text-gray-700 hover:text-burger-red p-2';
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+        
+        // Add mobile menu functionality if needed
+        mobileMenuToggle.addEventListener('click', () => {
+            // Mobile menu implementation can be added here
+            console.log('Mobile menu clicked');
         });
     </script>
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #FF6B35 0%, #D32F2F 100%);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #D32F2F 0%, #FF6B35 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-pattern {
+                background-size: 30px 30px;
+            }
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            .text-7xl {
+                font-size: 3rem !important;
+            }
+        }
+    </style>
 </body>
 </html>
